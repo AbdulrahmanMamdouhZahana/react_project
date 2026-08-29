@@ -1,15 +1,23 @@
 import Img from "./Img";
 import Button from "./Ui/Button";
 import { cutText } from "../utils/function";
+import ColorsButton from "./Ui/ColorsButton";
 
 
 interface IProps{
     product: object;
- }
+}
+ 
 
 const ProductCard = ({ product }: IProps) => {
+
+    const { colors, imgPath, alt, title, description, price, ...rest } = product
     
-    const {imgPath, alt, title, description, price, ...rest} = product
+    const productColor = colors.map(color =>  <ColorsButton key={color} color={color} /> )
+    // console.log(productColor)
+    
+
+    
     return (
             <div className="border flex flex-col p-2 max-w-sm ">
                 
@@ -23,14 +31,12 @@ const ProductCard = ({ product }: IProps) => {
 
 
             <div className="flex gap-2 my-2">
-            <span className= "w-5 h-5 bg-indigo-400 rounded-full  cursor-pointer "   />
-            <span className= "w-5 h-5 bg-yellow-400 rounded-full cursor-pointer  "   />
-            <span className= "w-5 h-5 bg-red-400 rounded-full cursor-pointer  "   />
+                {productColor}
             </div>
 
             <div className="flex justify-between">
                     <span>{ price}</span>
-                    <img src={ product.category[0].imgPath} alt={ product.category[0].alt} className="w-7 h-7 rounded-full" />
+                    <img src={ product.category.imgCat} alt={ product.category.altCat} className="w-7 h-7 rounded-full" />
             </div>
 
 {/* <div className="flex justify-between my-3">
