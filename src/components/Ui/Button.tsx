@@ -4,13 +4,13 @@ interface IProps extends ButtonHTMLAttributes<HTMLButtonElement> {
     children: ReactNode,
     className?: string,
     width?: "w-full" | "w-fit",
-    
+
 }
 const Button = ({ children, className, width = "w-full", ...rest }: IProps) => {
     return (
         <button
             {...rest}
-            className={`${className} text-amber-50 p-3 ${width} cursor-pointer rounded-md`}
+            className={`${className} text-amber-50 p-3 ${width} cursor-pointer rounded-md hover:opacity-80 transition-opacity`}
         >
             {children}
         </button>
